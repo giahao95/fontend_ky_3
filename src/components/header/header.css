@@ -19,6 +19,7 @@
 
 .header-icon {
   display: flex;
+  align-items: center;
   gap: 15px;
   font-size: 1.4rem;
   margin-left: 15px;
@@ -32,6 +33,7 @@
 .dropdown-content {
   display: flex;
   align-items: center;
+  background-color: #fff;
 }
 
 .dropdown-content a {

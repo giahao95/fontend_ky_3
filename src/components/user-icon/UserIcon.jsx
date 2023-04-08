@@ -1,39 +1,38 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { Popover } from 'antd';
+import { Popover, notification } from 'antd';
+import { useUserContext } from '../../context/user.context';
 
 const UserIcon = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const { user, setUser } = useUserContext();
+
+  const openNotification = (type, message) => {
+    notification[type]({
+      message: message,
+    });
+  };
 
   const logout = () => {
     localStorage.removeItem('accessToken');
-    setIsLogin(false);
+    setUser(null);
+    openNotification('success', 'Đăng xuất thành công');
   };
 
   const content = (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <a to="/signin" onClick={logout}>
-        Đăng xuất
-      </a>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
+      <Link to="/accountInfo">Thông tin cá nhân</Link>
+      <Link onClick={logout}>Đăng xuất</Link>
     </div>
   );
 
-  useEffect(() => {
-    if (localStorage.getItem('accessToken')) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-  }, [isLogin]);
-
-  return isLogin ? (
+  return user ? (
     <Popover placement="bottom" content={content}>
-      <UserOutlined style={{ color: isLogin ? 'green' : 'black' }} />
+      <span style={{ fontSize: '1rem' }}>{user.name}</span>
     </Popover>
   ) : (
-    <Link to="/dangnhap">
-      <UserOutlined style={{ color: isLogin ? 'green' : 'black' }} />
+    <Link to="/login">
+      <UserOutlined />
     </Link>
   );
 };

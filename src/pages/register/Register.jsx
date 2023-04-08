@@ -25,7 +25,7 @@ const Register = () => {
 
     if (response.status === 200) {
       openNotification('success', 'Đăng ký thành công');
-      navigate('/dangnhap');
+      navigate('/login');
     } else {
       const error = await response.json();
       openNotification('error', error.message);

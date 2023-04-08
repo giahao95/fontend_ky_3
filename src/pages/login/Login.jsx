@@ -3,9 +3,11 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Typography, notification } from 'antd';
 import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../context/user.context';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setUser } = useUserContext();
 
   const openNotification = (type, message) => {
     notification[type]({
@@ -28,6 +30,7 @@ const Login = () => {
       const result = await response.json();
       localStorage.setItem('accessToken', result.token);
       openNotification('success', 'Đăng nhập thành công');
+      setUser({ _id: result._id, name: result.name, email: result.email });
       navigate('/');
     } else {
       openNotification('error', 'Đăng nhập thất bại');
@@ -73,7 +76,7 @@ const Login = () => {
           <Button type="primary" htmlType="submit" className="login-form-button">
             Đăng nhập
           </Button>
-          Hoặc <Link to="/dangky">đăng ký!</Link>
+          Hoặc <Link to="/register">đăng ký!</Link>
         </Form.Item>
       </Form>
     </div>

@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './header.css';
 import { Link } from 'react-router-dom';
 import SearchIcon from '../search-icon/SearchIcon';
 import UserIcon from '../user-icon/UserIcon';
 import CartIcon from '../cart-icon/CartIcon';
+import { useUserContext } from '../../context/user.context';
 
 const Header = () => {
   const dropdownContentDiv = useRef(null);
@@ -11,10 +12,13 @@ const Header = () => {
   const span2 = useRef(null);
   const span3 = useRef(null);
   const [openDropdown, setOpenDropdown] = useState(false);
+  const { getUserDB } = useUserContext();
 
-  const openDropdownMenu = (e) => {
-    const element = e.target;
+  useEffect(() => {
+    getUserDB();
+  }, []);
 
+  const openDropdownMenu = () => {
     dropdownContentDiv.current.classList.toggle('dropdown-content-open');
 
     if (!openDropdown) {
