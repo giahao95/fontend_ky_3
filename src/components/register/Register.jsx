@@ -1,12 +1,37 @@
 import React from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Typography } from 'antd';
+import { Button, Form, Input, Typography, notification } from 'antd';
 import './register.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const navigate = useNavigate();
+
+  const openNotification = (type, message) => {
+    notification[type]({
+      message: message,
+    });
   };
+
+  const registerUser = async (values) => {
+    const { name, email, confirm } = values;
+
+    const response = await fetch('http://localhost:3000/users/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password: confirm }),
+    });
+
+    if (response.status === 200) {
+      openNotification('success', 'Đăng ký thành công');
+      navigate('/dangnhap');
+    } else {
+      const error = await response.json();
+      openNotification('error', error.message);
+    }
+  };
+
   return (
     <div className="register-container">
       <Typography.Title level={2}>Đăng ký</Typography.Title>
@@ -15,11 +40,11 @@ const Register = () => {
         wrapperCol={{ span: 24 }}
         name="normal_login"
         className="register-form"
-        onFinish={onFinish}
+        onFinish={registerUser}
       >
         <Form.Item
           label="Họ tên"
-          name="userName"
+          name="name"
           rules={[
             {
               required: true,

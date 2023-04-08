@@ -1,17 +1,43 @@
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Typography } from 'antd';
+import { Button, Form, Input, Typography, notification } from 'antd';
 import './login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const navigate = useNavigate();
+
+  const openNotification = (type, message) => {
+    notification[type]({
+      message: message,
+    });
   };
+
+  const loginDB = async (values) => {
+    const { email, password } = values;
+
+    const response = await fetch('http://localhost:3000/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.status === 200) {
+      const result = await response.json();
+      localStorage.setItem('accessToken', result.token);
+      openNotification('success', 'Đăng nhập thành công');
+      navigate('/');
+    } else {
+      openNotification('error', 'Đăng nhập thất bại');
+    }
+  };
+
   return (
     <div className="login-container">
       <Typography.Title level={2}>Đăng nhập</Typography.Title>
-      <Form name="normal_login" className="login-form" onFinish={onFinish}>
+      <Form name="normal_login" className="login-form" onFinish={loginDB}>
         <Form.Item
           name="email"
           rules={[
