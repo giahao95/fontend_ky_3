@@ -1,4 +1,5 @@
 import React from 'react';
+import './user-icon.css';
 import { UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { Popover, notification } from 'antd';
@@ -21,18 +22,22 @@ const UserIcon = () => {
 
   const content = (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
-      <Link to="/accountInfo">Thông tin cá nhân</Link>
-      <Link onClick={logout}>Đăng xuất</Link>
+      <Link to="/account" className="user-link">
+        Thông tin cá nhân
+      </Link>
+      <Link onClick={logout} className="user-link">
+        Đăng xuất
+      </Link>
     </div>
   );
 
   return user ? (
     <Popover placement="bottom" content={content}>
-      <span style={{ fontSize: '1rem' }}>{user.name}</span>
+      <div className="user-icon">{user.name}</div>
     </Popover>
   ) : (
     <Link to="/login">
-      <UserOutlined />
+      <UserOutlined style={{ color: '#000' }} />
     </Link>
   );
 };

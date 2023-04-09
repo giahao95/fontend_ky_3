@@ -3,17 +3,18 @@ import './App.css';
 import '@coreui/coreui/dist/css/coreui.min.css';
 import Homepage from './pages/homepage/Homepage';
 import Header from './components/header/Header';
-import Login from './components/login/Login';
-import Register from './components/register/Register';
-
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+import UserInfo from './pages/user-info/UserInfo';
 function App() {
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/home" element={<Homepage />} />
-        <Route path="/dangnhap" element={<Login />} />
-        <Route path="/dangky" element={<Register />} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/account" element={<UserInfo />} />
       </Routes>
     </div>
   );

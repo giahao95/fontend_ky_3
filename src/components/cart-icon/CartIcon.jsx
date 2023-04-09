@@ -11,12 +11,12 @@ const CartIcon = () => {
     setOpen(false);
   };
   return (
-    <>
+    <div>
       <ShoppingCartOutlined onClick={showDrawer} />
       <Drawer placement="right" closable={false} onClose={onClose} open={open}>
         <Typography.Title level={2}>Giỏ hàng</Typography.Title>
       </Drawer>
-    </>
+    </div>
   );
 };
 

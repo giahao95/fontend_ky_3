@@ -115,7 +115,7 @@ const Register = () => {
         <Divider plain>Hoặc</Divider>
         <p style={{ fontStyle: 'italic', textAlign: 'center' }}>
           Nếu bạn chứa có tài khoản, hãy chọn{' '}
-          <Link to="/login" style={{ fontWeight: '500' }}>
+          <Link to="/login" className="link">
             đăng nhập!
           </Link>
         </p>

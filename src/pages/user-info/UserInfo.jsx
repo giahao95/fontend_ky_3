@@ -72,8 +72,8 @@ const UserInfo = () => {
             Thông tin cá nhân
           </Typography.Title>
           <Form
-            labelCol={{ span: 6 }}
-            wrapperCol={{ span: 18 }}
+            labelCol={{ span: 5 }}
+            wrapperCol={{ span: 19 }}
             name="normal_login"
             className="update-form"
             labelAlign="left"
