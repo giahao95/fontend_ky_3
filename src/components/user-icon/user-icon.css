@@ -1,0 +1,15 @@
+.user-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.user-link:hover {
+  color: #e3b285;
+  text-decoration: underline;
+}
+
+.user-icon {
+  font-size: 1rem;
+}

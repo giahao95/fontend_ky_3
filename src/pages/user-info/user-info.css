@@ -1,0 +1,30 @@
+.userInfo {
+  position: relative;
+  padding-top: 120px;
+  max-width: 60%;
+  margin: auto;
+}
+
+.update-form {
+  margin-top: 30px;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  /* position: absolute;
+  right: 30%; */
+}
+
+@media screen and (max-width: 900px) {
+  .userInfo {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .update-form-button {
+    right: 43%;
+  }
+}

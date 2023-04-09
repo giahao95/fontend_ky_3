@@ -1,0 +1,31 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200px;
+  gap: 20px;
+}
+
+.login-form {
+  width: 50%;
+}
+
+.login-container .login-form-button {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.link {
+  font-weight: 500;
+}
+
+.link:hover {
+  color: #e3b285;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+  .login-form {
+    width: 90%;
+  }
+}

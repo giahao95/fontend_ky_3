@@ -1,18 +1,27 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import Home from './pages/home';
+import '@coreui/coreui/dist/css/coreui.min.css';
+import Homepage from './pages/homepage/Homepage';
+import Header from './components/header/Header';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+import UserInfo from './pages/user-info/UserInfo';
 import Cart from './pages/cart';
 import Checkout from './pages/checkout';
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className="App">
+      <Header />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/account" element={<UserInfo />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/checkout" element={<Checkout />}></Route>
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
 
