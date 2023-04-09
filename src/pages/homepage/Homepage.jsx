@@ -4,7 +4,7 @@ import Card from './components/Card/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { datasach } from '../../constants/darasach';
 import { images } from '../../constants/images';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
 	CAccordion, 
 	CAccordionBody, 
@@ -52,13 +52,13 @@ const Homepage = () => {
 	return (
 		<div>
 			<div className={cl.homepage_header}>
-				<a href="/" className={cl.homepage_header_link}>
+				<Link to="/" className={cl.homepage_header_link}>
 					<div className={cl.homepage_header_bg}>
 						<h1 className={cl.homepage_header_title}>
 							Books is Life
 						</h1>
 					</div>
-				</a>						
+				</Link>						
 			</div>	
 			<div className={cl.homepage_content}>
 				<div className={cl.homepage_about}>
