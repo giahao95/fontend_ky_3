@@ -4,8 +4,8 @@ import Card from './components/Card/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { datasach } from '../../constants/darasach';
 import { images } from '../../constants/images';
-// import { Link } from 'react-router-dom';
-import { CAccordion, CAccordionBody, CAccordionHeader, CAccordionItem } from '@coreui/react';
+import { Link } from 'react-router-dom';
+import { CCarousel, CCarouselItem, CAccordion, CAccordionBody, CAccordionHeader, CAccordionItem } from '@coreui/react';
 
 const Homepage = () => {
   const bestSellers = [];
@@ -25,13 +25,6 @@ const Homepage = () => {
   getFilteredList(bestSellers, 'best seller');
   getFilteredList(recommendations, 'moi');
 
-  const styleAcc = {
-    '--cui-accordion-bg': '#fdf5e2',
-    '--cui-accordion-active-color': '#000',
-    '--cui-accordion-active-bg': '#DED3B5',
-    '--cui-accordion-border-color': '#000',
-  };
-
   const popularItems = bestSellers.slice(0, 3);
   const otherPopularItems = bestSellers.slice(3);
   const recommendationsItems = recommendations.slice(0, 4);
@@ -46,11 +39,28 @@ const Homepage = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <div className={cl.homepage_header}>
-        <a href="/" className={cl.homepage_header_link}>
-          <div className={cl.homepage_header_bg}>
-            <h1 className={cl.homepage_header_title}>Books is Life</h1>
-          </div>
-        </a>
+        <CCarousel controls>
+          <CCarouselItem>
+            <Link to="/" className={cl.homepage_header_link}>
+              <div className={cl.homepage_header_bg}>
+                <h1 className={cl.homepage_header_title}>Books is Life</h1>
+              </div>
+            </Link>
+          </CCarouselItem>
+          <CCarouselItem>
+            <Link to="/" className={cl.homepage_header_link}>
+              <div className={cl.homepage_header_bg2}>
+              </div>
+            </Link>
+          </CCarouselItem>
+          <CCarouselItem>
+            <Link to="/" className={cl.homepage_header_link}>
+              <div className={cl.homepage_header_bg3}>
+              </div>
+            </Link>
+          </CCarouselItem>
+        </CCarousel>
+        
       </div>
       <div className={cl.homepage_content}>
         <div className={cl.homepage_about}>
@@ -72,8 +82,8 @@ const Homepage = () => {
               ))}
             </div>
             <div className={cl.accordion}>
-              <CAccordion style={styleAcc} activeItemKey={1}>
-                <CAccordionItem itemKey={1}>
+              <CAccordion>
+                <CAccordionItem>
                   <CAccordionHeader>See more</CAccordionHeader>
                   <CAccordionBody>
                     <div className={cl.homepage_item2}>
@@ -109,7 +119,7 @@ const Homepage = () => {
         <div className={cl.homepage_about}>
           <h1>About us</h1>
           <p>
-            Cửa hàng Sách Xưa & Nay là một trong những cửa hàng sách cũ lớn tại MindX, chuyên bán buôn bán lẻ sách cũ và
+            Cửa hàng Books là một trong những cửa hàng sách cũ lớn tại MindX, chuyên bán buôn bán lẻ sách cũ và
             truyện tranh các loại. Nơi đây thu hút rất nhiều sự quan tâm của mọi người khắp nơi, thu hút cả những vị
             khách tham quan du lịch bởi những đầu sách muôn hình vạn trạng, đa chủng loại phù hợp với nhiều đối tượng
             độc giả, đặc biệt là những "mọt sách''. Nằm nép mình giữa chốn đô thị ồn ã, tiệm sách vẫn giữ bên mình vẻ

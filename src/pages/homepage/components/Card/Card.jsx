@@ -1,10 +1,12 @@
 import React from 'react';
 import cl from './Card.module.css';
+import { Link } from 'react-router-dom';
+
 
 const Card = ({ item, src, link }) => {
 	return (
 		<div className={cl.card_container}>
-			<a className={cl.card_link} href={link}>
+			<Link className={cl.card_link} to="/">
 				<span className={cl.card_mask}>
 					<img className={cl.card_img} src={src} alt={item.name} />
 					<div className={cl.card_info}>
@@ -12,7 +14,7 @@ const Card = ({ item, src, link }) => {
 						<div className={cl.card_price}>{item.price}₫</div>
 					</div>
 				</span>				
-			</a>
+			</Link>
 		</div>
 	);
 };

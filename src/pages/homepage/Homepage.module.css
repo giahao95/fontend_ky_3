@@ -1,5 +1,5 @@
 .homepage_header {
-	height: 600px;
+	height: 768px;
 	width: 100%;
 }
 
@@ -9,14 +9,25 @@
 }
 
 .homepage_header_bg {
-	background-image: url("../../../public/image/book.webp");
+	background-image: url("../../../public/image/homepage_books.webp");
+}
+
+.homepage_header_bg2 {
+	background-image: url("../../../public/image/homepage_books1.jpg");
+}
+
+.homepage_header_bg3 {
+	background-image: url("../../../public/image/homepage_books2.jpg");
+}
+
+.homepage_header_bg, .homepage_header_bg2, .homepage_header_bg3 {
 	background-position: center bottom;
 	width: 100%;
-	height: 600px;
+	height: 768px;
 	display: flex;
 	align-items: center;
 	padding-top: 50px;
-	
+	padding-left: 50px;
 }
 
 .homepage_header_title {
@@ -24,10 +35,8 @@
 	width: 300px;
 	margin-left: 100px;
 	color: #DED3B5;
-}
-
-.homepage_content {
-	background: #fdf5e2;
+	font-family: 'Dancing Script', cursive;
+	font-size: 60px;
 }
 
 .homepage_popular, .homepage_recommendation {
@@ -39,8 +48,6 @@
 	padding: 30px;
 	background-color: #DED3B5;
 	padding: 30px 50px;
-	
-
 }
 
 .homepage_popular_items {
