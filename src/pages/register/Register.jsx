@@ -1,10 +1,18 @@
-import React from 'react';
-import { Button, Form, Input, Typography, notification } from 'antd';
+import React, { useEffect } from 'react';
+import { Button, Divider, Form, Input, Typography, notification } from 'antd';
 import './register.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../context/user.context';
 
 const Register = () => {
   const navigate = useNavigate();
+  const { user } = useUserContext();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
 
   const openNotification = (type, message) => {
     notification[type]({
@@ -104,6 +112,13 @@ const Register = () => {
             Đăng ký
           </Button>
         </Form.Item>
+        <Divider plain>Hoặc</Divider>
+        <p style={{ fontStyle: 'italic', textAlign: 'center' }}>
+          Nếu bạn chứa có tài khoản, hãy chọn{' '}
+          <Link to="/login" style={{ fontWeight: '500' }}>
+            đăng nhập!
+          </Link>
+        </p>
       </Form>
     </div>
   );

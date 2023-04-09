@@ -9,9 +9,12 @@
   margin-top: 30px;
 }
 
-.update-form-button {
-  position: absolute;
-  right: 30%;
+.form-button {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  /* position: absolute;
+  right: 30%; */
 }
 
 @media screen and (max-width: 900px) {
