@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <header className="header-container">
       <Link to="/">
-        <img src="./books-logo.png" alt="Books logo" className="header-logo" />
+        <img src="/books-logo.png" alt="Books logo" className="header-logo" />
       </Link>
       <nav className="navbar" onClick={openDropdownMenu}>
         <div className="dropdown-hambuger">
@@ -47,7 +47,7 @@ const Header = () => {
         </div>
         <div className="dropdown-content" ref={dropdownContentDiv}>
           <div className="category">
-            <Link to="/sach">Thể Loại Sách</Link>
+            <Link to="/products/all">Thể Loại Sách</Link>
             <div className="category-content">
               <Link to="">Tiểu thuyết</Link>
               <Link to="">Triết học</Link>

@@ -24,10 +24,10 @@ const SearchIcon = () => {
       <SearchOutlined />
       <div className={`search-content ${isOpen ? 'search-open' : null}`} ref={searchRef}>
         <Search
-          placeholder="Tìm kiếm sách"
+          placeholder=" Tìm kiếm tên sách"
           enterButton="Search"
-          allowClear
           onSearch={onSearch}
+          allowClear
           style={{
             width: '60%',
           }}

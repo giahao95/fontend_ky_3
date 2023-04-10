@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ProductPage.css';
 import { SearchOutlined } from '@ant-design/icons';
-import { datasach } from '../../constrant/datasach';
-import { Button } from 'antd';
+import { Button, Pagination } from 'antd';
 import { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 const ProductPage = () => {
+  const [producstList, setProductsList] = useState([]);
+  const [current, setCurrent] = useState(1);
+  const [totalProduct, settotalProduct] = useState(0);
+  const { category } = useParams();
+
+  const callProductsList = async (pageNumber) => {
+    if (category === 'all') {
+      const response = await fetch(`http://localhost:5000/products?pageNumber=${pageNumber}`);
+      const products = await response.json();
+      setProductsList(products.products);
+      if (totalProduct === 0) {
+        settotalProduct(products.totalProduct);
+      }
+    }
+  };
+
+  const onChange = (page) => {
+    callProductsList(page);
+    setCurrent(page);
+    document.documentElement.scrollTop = 0;
+  };
+
+  useEffect(() => {
+    callProductsList(current);
+  }, []);
+
   return (
     <div>
       <div className="title">
@@ -21,12 +47,18 @@ const ProductPage = () => {
       </div>
       <div className="main">
         <div className="product-container">
-          {datasach.map((product) => (
-            <div key={product.id}>
+          {producstList?.map((product) => (
+            <div key={product._id}>
               <div className="product-card">
-                <img src={product.image} className="product-image" />
-                <h3 className="product-name">{product.name}</h3>
-                <p className="product-price">{product.price}0đ</p>
+                <Link to={`/productdetail/${product._id}`}>
+                  <img src={product.address} className="product-image" />
+                </Link>
+                <h3 className="product-name">
+                  <Link to={`/productdetail/${product._id}`} style={{ color: '#000', textDecoration: 'none' }}>
+                    {product.name}
+                  </Link>
+                </h3>
+                <p className="product-price">{product.price}đ</p>
                 <Button style={{ backgroundColor: 'Black' }} type="primary">
                   Thêm vào giỏ hàng
                 </Button>
@@ -34,6 +66,7 @@ const ProductPage = () => {
             </div>
           ))}
         </div>
+        <Pagination current={current} onChange={onChange} total={totalProduct} style={{ marginTop: '20px' }} />;
       </div>
     </div>
   );

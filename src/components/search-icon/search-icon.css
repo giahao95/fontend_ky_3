@@ -17,6 +17,16 @@
   transition: 0.2s;
 }
 
+.search-content .ant-input {
+  padding: 0;
+  margin: 0;
+  height: 20px;
+}
+
+.search-content .ant-input-suffix {
+  margin-bottom: 3px;
+}
+
 .search-open {
   height: 70px;
   opacity: 1;
