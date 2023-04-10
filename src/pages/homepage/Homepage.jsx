@@ -49,18 +49,15 @@ const Homepage = () => {
           </CCarouselItem>
           <CCarouselItem>
             <Link to="/" className={cl.homepage_header_link}>
-              <div className={cl.homepage_header_bg2}>
-              </div>
+              <div className={cl.homepage_header_bg2}></div>
             </Link>
           </CCarouselItem>
           <CCarouselItem>
             <Link to="/" className={cl.homepage_header_link}>
-              <div className={cl.homepage_header_bg3}>
-              </div>
+              <div className={cl.homepage_header_bg3}></div>
             </Link>
           </CCarouselItem>
         </CCarousel>
-        
       </div>
       <div className={cl.homepage_content}>
         <div className={cl.homepage_about}>
@@ -119,11 +116,11 @@ const Homepage = () => {
         <div className={cl.homepage_about}>
           <h1>About us</h1>
           <p>
-            Cửa hàng Books là một trong những cửa hàng sách cũ lớn tại MindX, chuyên bán buôn bán lẻ sách cũ và
-            truyện tranh các loại. Nơi đây thu hút rất nhiều sự quan tâm của mọi người khắp nơi, thu hút cả những vị
-            khách tham quan du lịch bởi những đầu sách muôn hình vạn trạng, đa chủng loại phù hợp với nhiều đối tượng
-            độc giả, đặc biệt là những "mọt sách''. Nằm nép mình giữa chốn đô thị ồn ã, tiệm sách vẫn giữ bên mình vẻ
-            điềm tĩnh với nét đẹp cổ xưa nhưng không kém phần hiện đại đúng như tên gọi.
+            Cửa hàng Books là một trong những cửa hàng sách cũ lớn tại MindX, chuyên bán buôn bán lẻ sách cũ và truyện
+            tranh các loại. Nơi đây thu hút rất nhiều sự quan tâm của mọi người khắp nơi, thu hút cả những vị khách tham
+            quan du lịch bởi những đầu sách muôn hình vạn trạng, đa chủng loại phù hợp với nhiều đối tượng độc giả, đặc
+            biệt là những "mọt sách''. Nằm nép mình giữa chốn đô thị ồn ã, tiệm sách vẫn giữ bên mình vẻ điềm tĩnh với
+            nét đẹp cổ xưa nhưng không kém phần hiện đại đúng như tên gọi.
           </p>
           <hr />
         </div>
