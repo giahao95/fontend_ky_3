@@ -2,8 +2,8 @@ import React from 'react';
 import cl from './Card.module.css';
 import { Link } from 'react-router-dom';
 
-
 const Card = ({ item, src, link }) => {
+
 	return (
 		<div className={cl.card_container}>
 			<Link className={cl.card_link} to="/">
