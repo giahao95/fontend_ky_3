@@ -6,6 +6,9 @@ import Header from './components/header/Header';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import UserInfo from './pages/user-info/UserInfo';
+import Cart from './pages/cart';
+import Checkout from './pages/checkout';
+
 function App() {
   return (
     <div className="App">
@@ -15,6 +18,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<UserInfo />} />
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/checkout" element={<Checkout />}></Route>
       </Routes>
     </div>
   );
