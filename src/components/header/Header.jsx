@@ -50,6 +50,8 @@ const Header = () => {
             <Link to="/sach">Thể Loại Sách</Link>
             <div className="category-content">
               <Link to="">Tiểu thuyết</Link>
+              <Link to="">Triết học</Link>
+              <Link to="">Tâm lý học</Link>
               <Link to="">Thời sự - Chính trị</Link>
               <Link to="">Thiếu nhi</Link>
             </div>
