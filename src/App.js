@@ -8,6 +8,8 @@ import Register from './pages/register/Register';
 import UserInfo from './pages/user-info/UserInfo';
 import Cart from './pages/cart';
 import Checkout from './pages/checkout';
+import ProductPage from './pages/products/ProductPage';
+import InforProduct from './pages/product-info/InforProduct';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/account" element={<UserInfo />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/checkout" element={<Checkout />}></Route>
+        <Route path="/products/:category" element={<ProductPage />}></Route>
+        <Route path="/productdetail/:id" element={<InforProduct />}></Route>
       </Routes>
     </div>
   );
