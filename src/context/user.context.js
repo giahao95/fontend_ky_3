@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
     const token = localStorage.getItem('accessToken');
 
     if (token) {
-      const response = await fetch('http://localhost:3000/users/profile', {
+      const response = await fetch('http://localhost:5000/users/profile', {
         method: 'GET',
         headers: {
           authorization: `Bearer ${token}`,
@@ -29,7 +29,7 @@ export const UserProvider = ({ children }) => {
   const updateUserDB = async (name, email, password) => {
     const token = localStorage.getItem('accessToken');
     if (token) {
-      const response = await fetch('http://localhost:3000/users/profile', {
+      const response = await fetch('http://localhost:5000/users/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
