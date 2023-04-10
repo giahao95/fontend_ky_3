@@ -2,15 +2,18 @@ import React, { useRef, useState } from 'react';
 import { CloseOutlined, SearchOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import './search-icon.css';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 
 const SearchIcon = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const searchRef = useRef(null);
 
-  const onSearch = (value) => {
-    console.log(value);
+  const onSearch = async (value) => {
+    navigate(`/products/all?name=${value}`);
   };
 
   const openCloseSearch = (e) => {
@@ -21,8 +24,11 @@ const SearchIcon = () => {
 
   return (
     <div onClick={openCloseSearch}>
-      <SearchOutlined />
-      <div className={`search-content ${isOpen ? 'search-open' : null}`} ref={searchRef}>
+      <Link to="/products/all" style={{ color: '#000' }}>
+        <SearchOutlined />
+      </Link>
+
+      {/* <div className={`search-content ${isOpen ? 'search-open' : null}`} ref={searchRef}>
         <Search
           placeholder=" Tìm kiếm tên sách"
           enterButton="Search"
@@ -33,7 +39,7 @@ const SearchIcon = () => {
           }}
         />
         <CloseOutlined onClick={openCloseSearch} />
-      </div>
+      </div> */}
     </div>
   );
 };

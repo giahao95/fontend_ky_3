@@ -4,6 +4,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Button, Pagination } from 'antd';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { async } from 'q';
 
 const ProductPage = () => {
   const [producstList, setProductsList] = useState([]);
@@ -28,6 +29,14 @@ const ProductPage = () => {
     document.documentElement.scrollTop = 0;
   };
 
+  const searchBook = async (e) => {
+    e.preventDefault();
+    const response = await fetch(`http://localhost:5000/products?keyword=${e.target.value.toLowerCase()}`);
+    const book = await response.json();
+    setProductsList(book.products);
+    settotalProduct(book.totalProduct);
+  };
+
   useEffect(() => {
     callProductsList(current);
   }, []);
@@ -38,11 +47,11 @@ const ProductPage = () => {
         <h1>Product</h1>
       </div>
       <div className="search">
-        <form>
+        <form onSubmit={searchBook}>
           <div className="glass">
             <SearchOutlined style={{ fontSize: '30px' }} />
           </div>
-          <input placeholder="Search" type="text" />
+          <input placeholder="Tìm tên sách" type="text" name="search" onChange={searchBook} />
         </form>
       </div>
       <div className="main">
@@ -54,7 +63,10 @@ const ProductPage = () => {
                   <img src={product.address} className="product-image" />
                 </Link>
                 <h3 className="product-name">
-                  <Link to={`/productdetail/${product._id}`} style={{ color: '#000', textDecoration: 'none' }}>
+                  <Link
+                    to={`/productdetail/${product._id}`}
+                    style={{ color: '#000', textDecoration: 'none', textTransform: 'capitalize' }}
+                  >
                     {product.name}
                   </Link>
                 </h3>
@@ -66,7 +78,9 @@ const ProductPage = () => {
             </div>
           ))}
         </div>
-        <Pagination current={current} onChange={onChange} total={totalProduct} style={{ marginTop: '20px' }} />;
+        {totalProduct >= 10 && (
+          <Pagination current={current} onChange={onChange} total={totalProduct} style={{ marginTop: '20px' }} />
+        )}
       </div>
     </div>
   );

@@ -39,6 +39,7 @@
   text-align: center;
   font-weight: bold;
   margin: 10px;
+  text-transform: capitalize;
 }
 
 .book-details {
