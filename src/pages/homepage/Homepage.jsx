@@ -6,10 +6,17 @@ import { datasach } from '../../constants/darasach';
 import { images } from '../../constants/images';
 import { Link } from 'react-router-dom';
 import { CCarousel, CCarouselItem, CAccordion, CAccordionBody, CAccordionHeader, CAccordionItem } from '@coreui/react';
+import useFetchApi from '../../hook/useFetchApi';
+import useFetchApiTop5P from '../../hook/useFetchApiTop5P';
 
 const Homepage = () => {
   const bestSellers = [];
   const recommendations = [];
+
+  const { data}  = useFetchApi({url:"http://localhost:5000/products"})
+
+  const {dataTop5} = useFetchApiTop5P({url:"http://localhost:5000/products/a/top"})
+  console.log(dataTop5);
 
   function getFilteredList(arr, tag) {
     datasach.forEach((obj) => {
@@ -25,14 +32,13 @@ const Homepage = () => {
   getFilteredList(bestSellers, 'best seller');
   getFilteredList(recommendations, 'moi');
 
-  const popularItems = bestSellers.slice(0, 3);
-  const otherPopularItems = bestSellers.slice(3);
-  const recommendationsItems = recommendations.slice(0, 4);
+  const popularItems = data.slice(0, 3);
+  const otherPopularItems = data.slice(3);
+  // const recommendationsItems = recommendations.slice(0, 4);
 
   const src =
     'https://www.befunky.com/images/prismic/5ddfea42-7377-4bef-9ac4-f3bd407d52ab_landing-photo-to-cartoon-img5.jpeg';
   const img = images[0].image;
-  console.log(img);
 
   const link = 'google.com';
 
@@ -75,7 +81,7 @@ const Homepage = () => {
           <div className={cl.homepage_popular_items}>
             <div className={cl.homepage_item}>
               {popularItems.map((item) => (
-                <Card link={link} src={src} item={item} key={item.name} />
+                <Card link={link} src={item.address} item={item} key={item.name} />
               ))}
             </div>
             <div className={cl.accordion}>
@@ -85,7 +91,7 @@ const Homepage = () => {
                   <CAccordionBody>
                     <div className={cl.homepage_item2}>
                       {otherPopularItems.map((item) => (
-                        <Card link={link} src={src} item={item} key={item.name} />
+                        <Card link={link} src={item.address} item={item} key={item.name} />
                       ))}
                     </div>
                   </CAccordionBody>
@@ -107,8 +113,8 @@ const Homepage = () => {
           <h2 className={cl.title}>Recommendation books</h2>
           <div className={cl.homepage_recommendation_items}>
             <div className={cl.homepage_item}>
-              {recommendationsItems.map((item) => (
-                <Card link={link} src={src} item={item} key={item.name} />
+              {dataTop5.map((item) => (
+                <Card link={link} src={item.address} item={item} key={item.name} />
               ))}
             </div>
           </div>
