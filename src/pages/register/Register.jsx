@@ -23,7 +23,7 @@ const Register = () => {
   const registerUser = async (values) => {
     const { name, email, confirm } = values;
 
-    const response = await fetch('http://localhost:3000/users/', {
+    const response = await fetch('http://localhost:5000/users/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

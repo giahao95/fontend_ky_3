@@ -24,7 +24,7 @@ const Login = () => {
   const loginDB = async (values) => {
     const { email, password } = values;
 
-    const response = await fetch('http://localhost:3000/users/login', {
+    const response = await fetch('http://localhost:5000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
