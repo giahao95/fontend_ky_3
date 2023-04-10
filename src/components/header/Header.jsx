@@ -49,10 +49,9 @@ const Header = () => {
           <div className="category">
             <Link to="/sach">Thể Loại Sách</Link>
             <div className="category-content">
-              <Link to="">Văn học Việt Nam</Link>
-              <Link to="">Văn học nước ngoài</Link>
-              <Link to="">Kinh tế - Chính trị</Link>
-              <Link to="">Lịch sử - Địa lý</Link>
+              <Link to="">Tiểu thuyết</Link>
+              <Link to="">Thời sự - Chính trị</Link>
+              <Link to="">Thiếu nhi</Link>
             </div>
           </div>
           <Link to="/lienhe">Liên Hệ</Link>
