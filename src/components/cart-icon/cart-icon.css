@@ -1,0 +1,18 @@
+.cart-icon {
+  position: relative;
+}
+
+.cart-number {
+  display: inline-block;
+  font-size: 0.8rem;
+  background-color: #000;
+  color: #fff;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 16px;
+  position: absolute;
+  top: 4px;
+  right: -5px;
+}

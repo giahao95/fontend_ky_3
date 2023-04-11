@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
-import { Drawer, Typography } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import './cart-icon.css';
+import { useCartContext } from '../../context/cart.context';
 
 const CartIcon = () => {
-  const [open, setOpen] = useState(false);
-  const showDrawer = () => {
-    setOpen(true);
-  };
-  const onClose = () => {
-    setOpen(false);
-  };
+  const [cartNumber, setCartNumber] = useState(0);
+  const { cart } = useCartContext();
+  const cartSum = JSON.parse(localStorage.getItem('cart'))?.reduce((sum, item) => {
+    return (sum += item.cartNum);
+  }, 0);
+
+  useEffect(() => {
+    if (cartSum >= 0) {
+      setCartNumber(cartSum);
+    }
+  }, [cartSum]);
+
   return (
-    <div>
-      <ShoppingCartOutlined onClick={showDrawer} />
-      <Drawer placement="right" closable={false} onClose={onClose} open={open}>
-        <Typography.Title level={2}>Giỏ hàng</Typography.Title>
-      </Drawer>
+    <div className="cart-icon">
+      <ShoppingCartOutlined />
+      {cartNumber > 0 ? <span className="cart-number">{cartNumber}</span> : null}
     </div>
   );
 };

@@ -10,8 +10,18 @@ import Cart from './pages/cart';
 import Checkout from './pages/checkout';
 import ProductPage from './pages/products/ProductPage';
 import InforProduct from './pages/product-info/InforProduct';
+import { useEffect } from 'react';
+import { useCartContext } from './context/cart.context';
 
 function App() {
+  const { setCart } = useCartContext();
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('cart'))?.length > 0) {
+      setCart([...JSON.parse(localStorage.getItem('cart'))]);
+    }
+  }, []);
+
   return (
     <div className="App">
       <Header />

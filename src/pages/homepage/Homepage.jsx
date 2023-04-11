@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import cl from './Homepage.module.css';
 import Card from './components/Card/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { datasach } from '../../constants/darasach';
-import { images } from '../../constants/images';
 import { Link } from 'react-router-dom';
 import { CCarousel, CCarouselItem, CAccordion, CAccordionBody, CAccordionHeader, CAccordionItem } from '@coreui/react';
 import useFetchApi from '../../hook/useFetchApi';
@@ -13,24 +11,24 @@ const Homepage = () => {
   const bestSellers = [];
   const recommendations = [];
 
-  const { data}  = useFetchApi({url:"http://localhost:5000/products"})
+  const { data } = useFetchApi({ url: 'http://localhost:5000/products' });
 
-  const {dataTop5} = useFetchApiTop5P({url:"http://localhost:5000/products/a/top"})
+  const { dataTop5 } = useFetchApiTop5P({ url: 'http://localhost:5000/products/a/top' });
   console.log(dataTop5);
 
-  function getFilteredList(arr, tag) {
-    datasach.forEach((obj) => {
-      obj.tag.filter((item) => {
-        if (item === tag) {
-          arr.push(obj);
-        }
-      });
-    });
-    return arr;
-  }
+  // function getFilteredList(arr, tag) {
+  //   datasach.forEach((obj) => {
+  //     obj.tag.filter((item) => {
+  //       if (item === tag) {
+  //         arr.push(obj);
+  //       }
+  //     });
+  //   });
+  //   return arr;
+  // }
 
-  getFilteredList(bestSellers, 'best seller');
-  getFilteredList(recommendations, 'moi');
+  // getFilteredList(bestSellers, 'best seller');
+  // getFilteredList(recommendations, 'moi');
 
   const popularItems = data.slice(0, 3);
   const otherPopularItems = data.slice(3);
@@ -38,7 +36,7 @@ const Homepage = () => {
 
   const src =
     'https://www.befunky.com/images/prismic/5ddfea42-7377-4bef-9ac4-f3bd407d52ab_landing-photo-to-cartoon-img5.jpeg';
-  const img = images[0].image;
+  // const img = images[0].image;
 
   const link = 'google.com';
 
@@ -67,7 +65,7 @@ const Homepage = () => {
       </div>
       <div className={cl.homepage_content}>
         <div className={cl.homepage_about}>
-          <img src={img} alt="" />
+          {/* <img src={img} alt="" /> */}
           <hr />
           <p>
             Sách là sản phẩm trí tuệ của con người, được tích lũy thông qua những kiến thức thực tiễn, nền văn hóa, lịch

@@ -37,7 +37,7 @@ const Login = () => {
       localStorage.setItem('accessToken', result.token);
       openNotification('success', 'Đăng nhập thành công');
       setUser({ _id: result._id, name: result.name, email: result.email });
-      navigate('/');
+      navigate(-1);
     } else {
       openNotification('error', 'Đăng nhập thất bại');
     }

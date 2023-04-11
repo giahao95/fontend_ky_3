@@ -3,15 +3,18 @@ import './ProductPage.css';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Pagination } from 'antd';
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useUserContext } from '../../context/user.context';
+import { useCartContext } from '../../context/cart.context';
 
 const ProductPage = () => {
   const [producstList, setProductsList] = useState([]);
   const [current, setCurrent] = useState(1);
   const [totalProduct, settotalProduct] = useState(0);
   const { user } = useUserContext();
+  const { cart, addCart } = useCartContext();
   const { category } = useParams();
+  const navigate = useNavigate();
 
   const callProductsList = async (pageNumber) => {
     const response = await fetch(`http://localhost:5000/products?pageNumber=${pageNumber}`);
@@ -45,7 +48,13 @@ const ProductPage = () => {
     settotalProduct(book.totalProduct);
   };
 
-  const handleAddCart = () => {};
+  const handleAddCart = (id) => {
+    if (user) {
+      addCart(id);
+    } else {
+      navigate('/login');
+    }
+  };
 
   useEffect(() => {
     if (category === 'all') {
@@ -56,7 +65,7 @@ const ProductPage = () => {
   }, [category]);
 
   return (
-    <div>
+    <div className="product-page">
       <div className="title">
         <h1>Product</h1>
       </div>
@@ -85,7 +94,7 @@ const ProductPage = () => {
                   </Link>
                 </h3>
                 <p className="product-price">{product.price}đ</p>
-                <Button style={{ backgroundColor: 'Black' }} type="primary" onClick={handleAddCart}>
+                <Button style={{ backgroundColor: 'Black' }} type="primary" onClick={() => handleAddCart(product._id)}>
                   Thêm vào giỏ hàng
                 </Button>
               </div>

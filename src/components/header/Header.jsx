@@ -62,7 +62,9 @@ const Header = () => {
       <div className="header-icon">
         <SearchIcon />
         <UserIcon />
-        <CartIcon />
+        <Link to="/cart" style={{ color: '#000' }}>
+          <CartIcon />
+        </Link>
       </div>
     </header>
   );

@@ -1,7 +1,14 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
+import './checkout.css';
+import { useCartContext } from '../../context/cart.context';
 
 const CheckOut = () => {
+  const { cart } = useCartContext();
+  const priceSum = cart?.reduce((sum, book) => {
+    return (sum += book.price * book.cartNum);
+  }, 0);
+
   const { TextArea } = Input;
   return (
     <div className="Checkout_total">
@@ -12,7 +19,7 @@ const CheckOut = () => {
         </Form.Item>
       </div>
       <div className="Checkout_Button">
-        <p> Total : </p>
+        <p> Total : {priceSum} đ</p>
         <p> Shipping & taxes calculated at checkout</p>
         <Button>Checkout</Button>
       </div>
