@@ -94,7 +94,7 @@ const ProductPage = () => {
                   </Link>
                 </h3>
                 <p className="product-price">{product.price}đ</p>
-                <Button style={{ backgroundColor: 'Black' }} type="primary" onClick={() => handleAddCart(product._id)}>
+                <Button className='btn-cart'  onClick={() => handleAddCart(product._id)}>
                   Thêm vào giỏ hàng
                 </Button>
               </div>
