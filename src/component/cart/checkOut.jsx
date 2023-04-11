@@ -14,7 +14,9 @@ const CheckOut = () => {
   const { TextArea } = Input;
 
   const handleCheckout = () => {
-    navigate('/checkout');
+    if (JSON.parse(localStorage.getItem('cart'))?.length > 0) {
+      navigate('/checkout');
+    }
   };
 
   return (

@@ -12,6 +12,7 @@ import ProductPage from './pages/products/ProductPage';
 import InforProduct from './pages/product-info/InforProduct';
 import { useEffect } from 'react';
 import { useCartContext } from './context/cart.context';
+import Contact from './pages/contact/Contact';
 
 function App() {
   const { setCart } = useCartContext();
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<UserInfo />} />
         <Route path="/cart" element={<Cart />}></Route>
