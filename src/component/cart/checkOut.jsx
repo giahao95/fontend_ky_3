@@ -20,7 +20,7 @@ const CheckOut = () => {
   return (
     <div className="Checkout_total">
       <div className="Checkout_total_note">
-        <p>Add Order Note</p>
+        <p>Thêm ghi chú</p>
         <Form.Item>
           <TextArea rows={4} />
         </Form.Item>
@@ -28,7 +28,7 @@ const CheckOut = () => {
       <div className="Checkout_Button">
         <p> Total : {priceSum} đ</p>
         <p> Shipping & taxes calculated at checkout</p>
-        <Button onClick={handleCheckout}>Checkout</Button>
+        <Button onClick={handleCheckout}>Thanh toán</Button>
       </div>
     </div>
   );
