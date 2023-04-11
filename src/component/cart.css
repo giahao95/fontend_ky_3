@@ -49,7 +49,7 @@
 .cart_container {
   width: 90%;
   margin: auto;
-  padding: 120px;
+  padding-top: 120px;
 }
 .Cart__ItemList {
   display: flex;

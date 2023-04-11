@@ -7,7 +7,7 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import UserInfo from './pages/user-info/UserInfo';
 import Cart from './pages/cart';
-import Checkout from './pages/checkout';
+import Checkout from './pages/checkout/checkout';
 import ProductPage from './pages/products/ProductPage';
 import InforProduct from './pages/product-info/InforProduct';
 import { useEffect } from 'react';

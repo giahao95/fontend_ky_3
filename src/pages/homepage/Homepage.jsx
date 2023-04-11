@@ -32,6 +32,7 @@ const Homepage = () => {
 
   const popularItems = data.slice(0, 3);
   const otherPopularItems = data.slice(3);
+  console.log(popularItems);
   // const recommendationsItems = recommendations.slice(0, 4);
 
   const src =
