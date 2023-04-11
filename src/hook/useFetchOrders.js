@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function useFetchApiOrders({ url }) {
   const [orders, setOrders] = useState([]);
@@ -17,15 +17,16 @@ function useFetchApiOrders({ url }) {
     }
   };
 
-  const createdOrder = async (item) => {
+  const createdOrder = async (item, token) => {
     try {
       setIsLoading(true);
       await fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(),
+        body: JSON.stringify(item),
       });
       await fetchData();
     } catch (e) {
@@ -41,7 +42,7 @@ function useFetchApiOrders({ url }) {
 
   return {
     orders,
-    createdOrder
+    createdOrder,
   };
 }
 
