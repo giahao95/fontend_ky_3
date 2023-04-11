@@ -5,8 +5,11 @@ import SearchIcon from '../search-icon/SearchIcon';
 import UserIcon from '../user-icon/UserIcon';
 import CartIcon from '../cart-icon/CartIcon';
 import { useUserContext } from '../../context/user.context';
+import { Layout } from 'antd';
 
-const Header = () => {
+const { Header } = Layout;
+
+const HeaderLayout = () => {
   const dropdownContentDiv = useRef(null);
   const span1 = useRef(null);
   const span2 = useRef(null);
@@ -20,7 +23,6 @@ const Header = () => {
 
   const openDropdownMenu = () => {
     dropdownContentDiv.current.classList.toggle('dropdown-content-open');
-
     if (!openDropdown) {
       span2.current.style.opacity = '0';
       span1.current.style.transform = 'translateY(8px) rotate(45deg)';
@@ -35,36 +37,42 @@ const Header = () => {
   };
 
   return (
-    <header className="header-container">
-      <Link to="/">
-        <img src="./books-logo.png" alt="Books logo" className="header-logo" />
-      </Link>
-      <nav className="navbar" onClick={openDropdownMenu}>
-        <div className="dropdown-hambuger">
-          <span ref={span1}></span>
-          <span ref={span2}></span>
-          <span ref={span3}></span>
-        </div>
-        <div className="dropdown-content" ref={dropdownContentDiv}>
-          <div className="category">
-            <Link to="/sach">Thể Loại Sách</Link>
-            <div className="category-content">
-              <Link to="">Văn học Việt Nam</Link>
-              <Link to="">Văn học nước ngoài</Link>
-              <Link to="">Kinh tế - Chính trị</Link>
-              <Link to="">Lịch sử - Địa lý</Link>
-            </div>
+    <Header
+      style={{
+        backgroundColor: 'blue',
+      }}
+    >
+      <header className="header-container">
+        <Link to="/">
+          <img src="./books-logo.png" alt="Books logo" className="header-logo" />
+        </Link>
+        <nav className="navbar" onClick={openDropdownMenu}>
+          <div className="dropdown-hambuger">
+            <span ref={span1}></span>
+            <span ref={span2}></span>
+            <span ref={span3}></span>
           </div>
-          <Link to="/lienhe">Liên Hệ</Link>
+          <div className="dropdown-content" ref={dropdownContentDiv}>
+            <div className="category">
+              <Link to="/sach">Thể Loại Sách</Link>
+              <div className="category-content">
+                <Link to="">Văn học Việt Nam</Link>
+                <Link to="">Văn học nước ngoài</Link>
+                <Link to="">Kinh tế - Chính trị</Link>
+                <Link to="">Lịch sử - Địa lý</Link>
+              </div>
+            </div>
+            <Link to="/lienhe">Liên Hệ</Link>
+          </div>
+        </nav>
+        <div className="header-icon">
+          <SearchIcon />
+          <UserIcon />
+          <CartIcon />
         </div>
-      </nav>
-      <div className="header-icon">
-        <SearchIcon />
-        <UserIcon />
-        <CartIcon />
-      </div>
-    </header>
+      </header>
+    </Header>
   );
 };
 
-export default Header;
+export default HeaderLayout;

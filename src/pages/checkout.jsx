@@ -43,12 +43,6 @@ const Checkout = () => {
   const [inputAddress, setinputAddress] = useState('');
   const [inputApartment, setinputApartment] = useState('');
   const [inputCity, setinputCity] = useState('');
-  console.log(inputContact);
-  console.log(inputCountry);
-  console.log(inputRegion);
-  console.log(inputFirstname);
-  console.log(inputApartment);
-  console.log(inputCity);
   return (
     <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
       <Layout>

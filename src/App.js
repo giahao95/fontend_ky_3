@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import '@coreui/coreui/dist/css/coreui.min.css';
 import Homepage from './pages/homepage/Homepage';
-import Header from './components/header/Header';
+import HeaderLayout from './components/header/Header';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import UserInfo from './pages/user-info/UserInfo';
@@ -12,7 +12,7 @@ import Checkout from './pages/checkout';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <HeaderLayout />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />

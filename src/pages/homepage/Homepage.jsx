@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cl from './Homepage.module.css';
 import Card from './components/Card/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,12 +6,17 @@ import { datasach } from '../../constants/darasach';
 import { images } from '../../constants/images';
 import { Link } from 'react-router-dom';
 import { CCarousel, CCarouselItem, CAccordion, CAccordionBody, CAccordionHeader, CAccordionItem } from '@coreui/react';
+import ListProduct from '../../component/homepage/listItem';
+import { Layout } from 'antd';
+import '../../component/homepage/homepage.css';
+
+const { Content } = Layout;
 
 const Homepage = () => {
   const bestSellers = [];
   const recommendations = [];
 
-  function getFilteredList(arr, tag) {
+  const getFilteredList = (arr, tag) => {
     datasach.forEach((obj) => {
       obj.tag.filter((item) => {
         if (item === tag) {
@@ -20,25 +25,26 @@ const Homepage = () => {
       });
     });
     return arr;
-  }
+  };
 
   getFilteredList(bestSellers, 'best seller');
   getFilteredList(recommendations, 'moi');
 
-  const popularItems = bestSellers.slice(0, 3);
-  const otherPopularItems = bestSellers.slice(3);
+  const popularItems = bestSellers.slice(0, 4);
+  const otherPopularItems = bestSellers.slice(4);
   const recommendationsItems = recommendations.slice(0, 4);
+
+  const ListGridItem = popularItems.map((e) => {
+    return <ListProduct productAddress={e.address} productName={e.name} productprice={e.price} />;
+  });
 
   const src =
     'https://www.befunky.com/images/prismic/5ddfea42-7377-4bef-9ac4-f3bd407d52ab_landing-photo-to-cartoon-img5.jpeg';
   const img = images[0].image;
-  console.log(img);
-
-  const link = 'google.com';
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <div className={cl.homepage_header}>
+    <Content>
+      <div className="homepage_header">
         <CCarousel controls>
           <CCarouselItem>
             <Link to="/" className={cl.homepage_header_link}>
@@ -49,18 +55,15 @@ const Homepage = () => {
           </CCarouselItem>
           <CCarouselItem>
             <Link to="/" className={cl.homepage_header_link}>
-              <div className={cl.homepage_header_bg2}>
-              </div>
+              <div className={cl.homepage_header_bg2}></div>
             </Link>
           </CCarouselItem>
           <CCarouselItem>
             <Link to="/" className={cl.homepage_header_link}>
-              <div className={cl.homepage_header_bg3}>
-              </div>
+              <div className={cl.homepage_header_bg3}></div>
             </Link>
           </CCarouselItem>
         </CCarousel>
-        
       </div>
       <div className={cl.homepage_content}>
         <div className={cl.homepage_about}>
@@ -76,11 +79,7 @@ const Homepage = () => {
         <div className={cl.homepage_popular}>
           <h2 className={cl.title}>Best seller books</h2>
           <div className={cl.homepage_popular_items}>
-            <div className={cl.homepage_item}>
-              {popularItems.map((item) => (
-                <Card link={link} src={src} item={item} key={item.name} />
-              ))}
-            </div>
+            <div className={cl.homepage_item}>{ListGridItem}</div>
             <div className={cl.accordion}>
               <CAccordion>
                 <CAccordionItem>
@@ -88,7 +87,7 @@ const Homepage = () => {
                   <CAccordionBody>
                     <div className={cl.homepage_item2}>
                       {otherPopularItems.map((item) => (
-                        <Card link={link} src={src} item={item} key={item.name} />
+                        <Card src={src} item={item} key={item.name} />
                       ))}
                     </div>
                   </CAccordionBody>
@@ -111,7 +110,7 @@ const Homepage = () => {
           <div className={cl.homepage_recommendation_items}>
             <div className={cl.homepage_item}>
               {recommendationsItems.map((item) => (
-                <Card link={link} src={src} item={item} key={item.name} />
+                <Card src={src} item={item} key={item.name} />
               ))}
             </div>
           </div>
@@ -119,16 +118,16 @@ const Homepage = () => {
         <div className={cl.homepage_about}>
           <h1>About us</h1>
           <p>
-            Cửa hàng Books là một trong những cửa hàng sách cũ lớn tại MindX, chuyên bán buôn bán lẻ sách cũ và
-            truyện tranh các loại. Nơi đây thu hút rất nhiều sự quan tâm của mọi người khắp nơi, thu hút cả những vị
-            khách tham quan du lịch bởi những đầu sách muôn hình vạn trạng, đa chủng loại phù hợp với nhiều đối tượng
-            độc giả, đặc biệt là những "mọt sách''. Nằm nép mình giữa chốn đô thị ồn ã, tiệm sách vẫn giữ bên mình vẻ
-            điềm tĩnh với nét đẹp cổ xưa nhưng không kém phần hiện đại đúng như tên gọi.
+            Cửa hàng Books là một trong những cửa hàng sách cũ lớn tại MindX, chuyên bán buôn bán lẻ sách cũ và truyện
+            tranh các loại. Nơi đây thu hút rất nhiều sự quan tâm của mọi người khắp nơi, thu hút cả những vị khách tham
+            quan du lịch bởi những đầu sách muôn hình vạn trạng, đa chủng loại phù hợp với nhiều đối tượng độc giả, đặc
+            biệt là những "mọt sách''. Nằm nép mình giữa chốn đô thị ồn ã, tiệm sách vẫn giữ bên mình vẻ điềm tĩnh với
+            nét đẹp cổ xưa nhưng không kém phần hiện đại đúng như tên gọi.
           </p>
           <hr />
         </div>
       </div>
-    </div>
+    </Content>
   );
 };
 
