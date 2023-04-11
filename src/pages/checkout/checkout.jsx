@@ -4,6 +4,7 @@ import { LeftOutlined } from '@ant-design/icons';
 import { useCartContext } from '../../context/cart.context';
 import { useNavigate } from 'react-router-dom';
 import './checkout.css';
+import useFetchApiOrders from '../../hook/useFetchOrders';
 const { Header, Footer, Content } = Layout;
 
 const Checkout = () => {
@@ -19,12 +20,12 @@ const Checkout = () => {
   const [inputCity, setinputCity] = useState('');
   const [discount, setDiscount] = useState(0);
   const navigate = useNavigate();
-  console.log(inputContact);
-  console.log(inputCountry);
-  console.log(inputRegion);
-  console.log(inputFirstname);
-  console.log(inputApartment);
-  console.log(inputCity);
+  // console.log(inputContact);
+  // console.log(inputCountry);
+  // console.log(inputRegion);
+  // console.log(inputFirstname);
+  // console.log(inputApartment);
+  // console.log(inputCity);
 
   useEffect(() => {
     const cartData = JSON.parse(localStorage.getItem('cart'));
@@ -33,6 +34,13 @@ const Checkout = () => {
     }
   }, []);
 
+  const {orders, createOrder} = useFetchApiOrders({url: "http://localhost:5000/orders"})
+  console.log(orders);
+
+  const handleSubmit = () => {
+    
+  }
+ 
   return (
     <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
       <Layout>
@@ -98,7 +106,7 @@ const Checkout = () => {
                         <LeftOutlined />
                         Return to cart
                       </Button>
-                      <Button>Create Order</Button>
+                      <Button onSubmit={() => handleSubmit}>Create Order</Button>
                     </div>
                   </Card>
                 </div>
