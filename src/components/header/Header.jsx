@@ -56,7 +56,7 @@ const Header = () => {
               <Link to={`/products/Thiếu nhi`}>Thiếu nhi</Link>
             </div>
           </div>
-          <Link to="/lienhe">Liên Hệ</Link>
+          <Link to="/contact">Liên Hệ</Link>
         </div>
       </nav>
       <div className="header-icon">
