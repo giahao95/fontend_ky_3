@@ -49,11 +49,11 @@ const Header = () => {
           <div className="category">
             <Link to="/products/all">Thể Loại Sách</Link>
             <div className="category-content">
-              <Link to="">Tiểu thuyết</Link>
-              <Link to="">Triết học</Link>
-              <Link to="">Tâm lý học</Link>
-              <Link to="">Thời sự - Chính trị</Link>
-              <Link to="">Thiếu nhi</Link>
+              <Link to={`/products/Tiểu thuyết`}>Tiểu thuyết</Link>
+              <Link to={`/products/Triết học`}>Triết học</Link>
+              <Link to={`/products/Tâm lý học`}>Tâm lý học</Link>
+              <Link to={`/products/Thời sự - Chính trị`}>Thời sự - Chính trị</Link>
+              <Link to={`/products/Thiếu nhi`}>Thiếu nhi</Link>
             </div>
           </div>
           <Link to="/lienhe">Liên Hệ</Link>

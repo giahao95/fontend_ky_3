@@ -4,23 +4,31 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Button, Pagination } from 'antd';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { async } from 'q';
+import { useUserContext } from '../../context/user.context';
 
 const ProductPage = () => {
   const [producstList, setProductsList] = useState([]);
   const [current, setCurrent] = useState(1);
   const [totalProduct, settotalProduct] = useState(0);
+  const { user } = useUserContext();
   const { category } = useParams();
 
   const callProductsList = async (pageNumber) => {
-    if (category === 'all') {
-      const response = await fetch(`http://localhost:5000/products?pageNumber=${pageNumber}`);
-      const products = await response.json();
-      setProductsList(products.products);
-      if (totalProduct === 0) {
-        settotalProduct(products.totalProduct);
-      }
+    const response = await fetch(`http://localhost:5000/products?pageNumber=${pageNumber}`);
+    const products = await response.json();
+    setProductsList(products.products);
+    if (totalProduct === 0) {
+      settotalProduct(products.totalProduct);
     }
+  };
+
+  const getCategoryBook = async (pageNumber) => {
+    const response = await fetch(
+      `http://localhost:5000/products/category?pageNumber=${pageNumber}&keyword=${category}`,
+    );
+    const books = await response.json();
+    setProductsList(books.products);
+    settotalProduct(books.totalProduct);
   };
 
   const onChange = (page) => {
@@ -37,9 +45,15 @@ const ProductPage = () => {
     settotalProduct(book.totalProduct);
   };
 
+  const handleAddCart = () => {};
+
   useEffect(() => {
-    callProductsList(current);
-  }, []);
+    if (category === 'all') {
+      callProductsList(current);
+    } else {
+      getCategoryBook(current);
+    }
+  }, [category]);
 
   return (
     <div>
@@ -71,7 +85,7 @@ const ProductPage = () => {
                   </Link>
                 </h3>
                 <p className="product-price">{product.price}đ</p>
-                <Button style={{ backgroundColor: 'Black' }} type="primary">
+                <Button style={{ backgroundColor: 'Black' }} type="primary" onClick={handleAddCart}>
                   Thêm vào giỏ hàng
                 </Button>
               </div>

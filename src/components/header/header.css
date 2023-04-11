@@ -103,7 +103,7 @@
 
   .navbar {
     position: absolute;
-    top: 30px;
+    top: 20px;
     cursor: pointer;
   }
 
@@ -155,7 +155,7 @@
   }
 
   .navbar {
-    top: 22px;
+    top: 18px;
   }
 
   .dropdown-hambuger span {
