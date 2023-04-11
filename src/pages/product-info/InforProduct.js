@@ -11,10 +11,36 @@ const InforProduct = () => {
   const getProductDetail = async () => {
     const response = await fetch(`http://localhost:5000/products/${id}`);
     const product = await response.json();
-    console.log(product);
     setProductDetail(product);
   };
 
+  const handleAddCart = () => {
+    const cartItem = window.localStorage.getItem('cart');
+    if (!cartItem) {
+      window.localStorage.setItem(
+        'cart',
+        JSON.stringify([
+          {
+            product: productDetail._id,
+            quanity: 1,
+          },
+        ]),
+      );
+    } else {
+      let cartItemadd = JSON.parse(cartItem);
+      if (
+        cartItemadd.filter((e) => {
+          return e.product == productDetail._id;
+        }).length === 0
+      ) {
+        cartItemadd.push({
+          product: productDetail._id,
+          quanity: 1,
+        });
+        window.localStorage.setItem('cart', JSON.stringify(cartItemadd));
+      }
+    }
+  };
   useEffect(() => {
     getProductDetail();
   }, []);
@@ -40,6 +66,7 @@ const InforProduct = () => {
               fontSize: '1rem',
             }}
             type="primary"
+            onClick={handleAddCart}
           >
             Thêm vào giỏ hàng
           </Button>

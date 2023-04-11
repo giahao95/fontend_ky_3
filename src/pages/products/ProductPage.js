@@ -21,6 +21,7 @@ const ProductPage = () => {
       settotalProduct(products.totalProduct);
     }
   };
+  console.log(callProductsList);
 
   const getCategoryBook = async (pageNumber) => {
     const response = await fetch(
@@ -45,7 +46,12 @@ const ProductPage = () => {
     settotalProduct(book.totalProduct);
   };
 
-  const handleAddCart = () => {};
+  const handleAddCart = () => {
+    let cartItem = window.localStorage.getItem('key');
+    if (!cartItem) {
+      console.log('_____');
+    }
+  };
 
   useEffect(() => {
     if (category === 'all') {
