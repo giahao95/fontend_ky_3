@@ -31,7 +31,8 @@ const Register = () => {
       body: JSON.stringify({ name, email, password: confirm }),
     });
 
-    if (response.status === 200) {
+    if (response.status >= 200 && response.status < 300) {
+      console.log('success');
       openNotification('success', 'Đăng ký thành công');
       navigate('/login');
     } else {
